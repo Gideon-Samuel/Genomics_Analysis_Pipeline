@@ -1,207 +1,220 @@
 # Genomics Analysis Pipeline
 
-> Cancer genomics workflow for analyzing TCGA somatic mutation data using maftools and Bioconductor in R.
+> Integrated cancer genomics workflow for exploring somatic mutations and copy number variation (CNV) patterns in TCGA-LUAD using Bioconductor in R.
 
 ## Overview
 
-This project explores the somatic mutational landscape of lung adenocarcinoma (LUAD) using TCGA mutation data and the `maftools` package in R.
+This repository contains a cancer genomics analysis workflow focused on lung adenocarcinoma (LUAD) using TCGA datasets. The project combines somatic mutation profiling and copy number variation analysis to investigate genomic instability, recurrent driver alterations, and large-scale chromosomal changes associated with tumor progression.
 
-The main goal of this analysis was to investigate:
-
-- frequently mutated genes in LUAD,
-- mutation burden across tumor samples,
-- dominant mutation classes and variant types,
-- and mutation patterns in important driver genes such as TP53.
-
-Using TCGA-LUAD mutation data, I performed mutation profiling, generated mutation summary plots and oncoplots, and analyzed TP53 mutation distributions across tumor samples.
-
-This project was built as part of my exploration into computational cancer genomics and genomic data analysis workflows.
+The workflow includes mutation visualization, TP53 mutation analysis, CNV heatmaps, and genomic instability assessment using Bioconductor-based tools in R.
 
 ---
 
-# Dataset
+## Somatic Mutation Analysis
 
-- Project: TCGA-LUAD
-- Cancer Type: Lung Adenocarcinoma
-- Source: Genomic Data Commons (GDC)
-- Data Type: Masked Somatic Mutation
-- Workflow: Aliquot Ensemble Somatic Variant Merging and Masking
+Somatic mutation analysis was performed using TCGA-LUAD MAF files to identify recurrently mutated genes and characterize mutation patterns across tumor samples.
 
-### Associated Publication
+### Key Findings
 
-The Cancer Genome Atlas Research Network.  
-**Comprehensive molecular profiling of lung adenocarcinoma.**  
-*Nature*. 2014;511(7511):543–550.
-
----
-
-# Key Findings
-
-- Analyzed somatic mutation profiles across **616 LUAD samples**
-- Detected genomic alterations in **90.26% of samples**
+- Analyzed mutation profiles across 616 LUAD samples
+- Detected genomic alterations in over 90% of tumor samples
 - Missense mutations were the dominant mutation class
 - SNPs represented the major variant type
-- TP53 and KRAS appeared among the most frequently mutated genes
+- TP53, TTN, KRAS, MUC16, and CSMD3 appeared among the most frequently mutated genes
 - Mutation burden varied substantially across samples, indicating strong tumor heterogeneity
 
----
+<details>
+<summary><b>View mutation analysis results</b></summary>
 
-# Biological Interpretation
+- Gene mutation summary: [Gene Summary](results/tables/TCGA_LUAD_gene_summary.csv)
 
-## Mutation Landscape
+</details>
 
-The mutation summary revealed substantial genomic heterogeneity across LUAD tumors. Several samples showed high mutation burdens, suggesting extensive genomic instability.
+### Biological Interpretation
 
-Missense mutations dominated the mutational spectrum, indicating widespread protein-altering genomic events associated with tumor progression.
+The mutation landscape demonstrated substantial genomic heterogeneity across LUAD tumors. TP53 mutations were highly recurrent and distributed across important functional domains, suggesting disruption of DNA damage response and cell-cycle regulation mechanisms.
 
----
+The enrichment of C>A and C>T substitutions is also consistent with smoking-associated mutational signatures commonly observed in lung adenocarcinoma.
 
-## Frequently Mutated Genes
+### Key Visualizations
 
-The oncoplot identified recurrent mutations in several well-known cancer-associated genes, including:
-
-- TP53
-- TTN
-- MUC16
-- CSMD3
-- KRAS
-- LRP1B
-- USH2A
-
-Many of these genes are commonly reported in LUAD and are associated with disrupted tumor suppressor activity, altered signaling pathways, and genomic instability.
-
----
-
-## TP53 Mutation Analysis
-
-TP53 showed one of the highest mutation frequencies across samples.
-
-The lollipop plot demonstrated that mutations are distributed across important functional regions of the TP53 protein, particularly within the DNA-binding domain.
-
-These alterations may impair:
-
-- DNA damage response
-- apoptosis regulation
-- cell-cycle control
-
-which are hallmark mechanisms involved in tumorigenesis.
-
----
-
-## Mutational Signatures
-
-The SNV class distribution showed strong enrichment of:
-
-- C>A substitutions
-- C>T substitutions
-
-These mutation patterns are commonly associated with smoking-related mutational processes observed in lung adenocarcinoma.
-
----
-
-# Key Visualizations
-
-## Mutation Summary
-
+#### Mutation Summary
 ![MAF Summary](results/figures/TCGA_LUAD_maf_summary.png)
 
----
-
-## Oncoplot
-
+#### Oncoplot
 ![Oncoplot](results/figures/TCGA_LUAD_oncoplot.png)
 
----
-
-## TP53 Lollipop Plot
-
-![TP53 Lollipop](results/figures/TCGA_LUAD_tp53_lollipop.png)
+#### TP53 Lollipop Plot
+![TP53 Lollipop](results/figures/TCGA_LUAD_TP53_lollipop.png)
 
 ---
 
-# Pipeline
+## Copy Number Variation (CNV) Analysis
 
-## Genomic Analysis Workflow
+Copy number variation analysis was performed using TCGA-LUAD copy number segment data to investigate chromosomal instability and large-scale genomic alterations.
 
-- Retrieve mutation data from TCGA
-- Prepare MAF object
-- Generate mutation summary statistics
-- Visualize recurrently mutated genes
-- Analyze TP53 mutation distribution
-- Export gene mutation summaries
+### Key Findings
+
+- Genome-wide CNV segment analysis revealed widespread chromosomal variability
+- CNV distributions showed both amplification and deletion events across tumor genomes
+- CNV heatmaps demonstrated strong genomic heterogeneity among samples
+- Segment value variability suggested extensive chromosomal instability in LUAD
+
+<details>
+<summary><b>View CNV analysis results</b></summary>
+
+- CNV segments: [CNV Segments](results/tables/TCGA_LUAD_CNV_segments.csv)
+- CNV summary: [CNV Summary](results/tables/TCGA_LUAD_CNV_summary.csv)
+
+</details>
+
+### Biological Interpretation
+
+The CNV analysis highlighted broad chromosomal instability across LUAD samples, with several genomic regions displaying strong copy number gains and losses.
+
+Such large-scale genomic alterations are associated with altered gene dosage, tumor evolution, and aggressive cancer phenotypes. The observed heterogeneity also suggests variability in genomic architecture between tumors.
+
+### Key Visualizations
+
+#### CNV Segment Distribution
+![CNV Distribution](results/figures/TCGA_LUAD_CNV_distribution.png)
+
+#### CNV Heatmap
+![CNV Heatmap](results/figures/TCGA_LUAD_CNV_heatmap.png)
 
 ---
 
-# Project Structure
+## Pipelines
+
+### 1. Somatic Mutation Analysis Pipeline
+
+* Mutation data retrieval from TCGA
+* MAF object preparation
+* Mutation summary statistics
+* Visualization:
+  * Mutation summary plot
+  * Oncoplot
+  * TP53 lollipop plot
+* Identification of recurrently mutated genes
+* Mutation burden analysis
+
+---
+
+### 2. Copy Number Variation (CNV) Pipeline
+
+* CNV segment retrieval from TCGA
+* CNV matrix preparation
+* Segment mean distribution analysis
+* Visualization:
+  * CNV heatmap
+  * CNV segment distribution plot
+* Exploration of chromosomal instability
+* Export of CNV summary statistics
+
+---
+
+## Dataset
+
+* TCGA Project: TCGA-LUAD
+* Source: [Genomic Data Commons (GDC)](https://portal.gdc.cancer.gov/)
+* Associated publication: The Cancer Genome Atlas Research Network. Comprehensive molecular profiling of lung adenocarcinoma. *Nature*. 2014;511(7511):543–550.
+
+---
+
+## Project Structure
 
 ```text
 scripts/
-└── tcga_luad_maf_analysis.R
+├── tcga_luad_maf_analysis.R
+└── tcga_luad_cnv_analysis.R
 
 results/
 ├── figures/
 │   ├── TCGA_LUAD_maf_summary.png
 │   ├── TCGA_LUAD_oncoplot.png
-│   └── TCGA_LUAD_TP53_lollipop.png
+│   ├── TCGA_LUAD_TP53_lollipop.png
+│   ├── TCGA_LUAD_CNV_distribution.png
+│   └── TCGA_LUAD_CNV_heatmap.png
 │
 └── tables/
-    └── TCGA_LUAD_gene_summary.csv
+    ├── TCGA_LUAD_gene_summary.csv
+    ├── TCGA_LUAD_CNV_segments.csv
+    └── TCGA_LUAD_CNV_summary.csv
+
+data/
+└── downloaded TCGA files (not included in repository)
 ```
 
 ---
 
-# How to Run
+## How to Run
 
-## Install Required Packages
-
-```r
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-
-BiocManager::install(c("TCGAbiolinks", "maftools"))
-```
-
-## Run Analysis
+### Run Somatic Mutation Analysis
 
 ```r
 source("scripts/tcga_luad_maf_analysis.R")
 ```
 
----
+### Run CNV Analysis
 
-# Output Files
+```r
+source("scripts/tcga_luad_cnv_analysis.R")
+```
 
-## Figures
-
-- TCGA_LUAD_maf_summary.png
-- TCGA_LUAD_oncoplot.png
-- TCGA_LUAD_TP53_lollipop.png
-
-## Tables
-
-- TCGA_LUAD_gene_summary.csv
+Results will be generated in the `results/` directory.
 
 ---
 
-# Tools Used
+## Installation
 
-- R
+Tested on R (>= 4.5)
+
+### Install Bioconductor packages
+
+```r
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install(c(
+    "TCGAbiolinks",
+    "maftools",
+    "ComplexHeatmap",
+    "circlize"
+))
+```
+
+---
+
+## Tools Used
+
+* R
+* TCGAbiolinks
+* maftools
+* ComplexHeatmap
+* Bioconductor
+
+---
+
+## Reproducibility
+
+R version: >= 4.5
+
+Key packages:
+
 - TCGAbiolinks
 - maftools
-- Bioconductor
+- ComplexHeatmap
 
 ---
 
-# Reproducibility
+## Notes
 
-Tested on:
-
-- R >= 4.5
-- maftools
-- TCGAbiolinks
+* Somatic mutation analysis was performed using MAF-formatted TCGA mutation data.
+* CNV analysis was performed using TCGA copy number segment files.
+* Visualizations were generated using Bioconductor-based genomic analysis packages.
 
 ---
 
-# Author
+## Author
 
 Gideon Samuel
