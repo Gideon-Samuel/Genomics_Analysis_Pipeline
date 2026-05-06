@@ -41,7 +41,7 @@ maf <- read.maf(maf = maf_data)
 
 # Mutation summary plot
 png(
-  "results/genomics/figures/maf_summary.png",
+  "results/genomics/figures/TCGA_LUAD_maf_summary.png",
   width = 1200,
   height = 800,
   res = 150
@@ -53,7 +53,7 @@ dev.off()
 
 # Oncoplot
 png(
-  "results/genomics/figures/oncoplot.png",
+  "results/genomics/figures/TCGA_LUAD_oncoplot.png",
   width = 1200,
   height = 900,
   res = 150
@@ -68,7 +68,7 @@ dev.off()
 
 # TP53 lollipop plot
 png(
-  "results/genomics/figures/tp53_lollipop.png",
+  "results/genomics/figures/TCGA_LUAD_tp53_lollipop.png",
   width = 1000,
   height = 700,
   res = 150
@@ -86,6 +86,6 @@ gene_summary <- getGeneSummary(maf)
 
 write.csv(
   gene_summary,
-  "results/genomics/tables/gene_summary.csv",
+  "results/genomics/tables/TCGA_LUAD_gene_summary.csv",
   row.names = FALSE
 )
