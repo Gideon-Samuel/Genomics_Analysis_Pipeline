@@ -115,7 +115,7 @@ These mutation patterns are commonly associated with smoking-related mutational 
 
 ## TP53 Lollipop Plot
 
-![TP53 Lollipop](results/figures/TCGA_LUAD_TP53_lollipop.png)
+![TP53 Lollipop](results/figures/TCGA_LUAD_tp53_lollipop.png)
 
 ---
 
