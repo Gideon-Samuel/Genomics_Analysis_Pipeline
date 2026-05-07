@@ -6,11 +6,10 @@
 
 This repository contains a cancer genomics analysis workflow focused on lung adenocarcinoma (LUAD) using TCGA datasets. The project combines somatic mutation profiling and copy number variation analysis to investigate genomic instability, recurrent driver alterations, and large-scale chromosomal changes associated with tumor progression.
 
-The workflow includes mutation visualization, TP53 mutation analysis, CNV heatmaps, and genomic instability assessment using Bioconductor-based tools in R.
-
+The workflow includes mutation profiling, TP53 mutation analysis, CNV visualization, and chromosomal alteration assessment using Bioconductor-based tools in R.
 ---
 
-## Somatic Mutation Analysis
+## Somatic Mutation Profiling
 
 Somatic mutation analysis was performed using TCGA-LUAD MAF files to identify recurrently mutated genes and characterize mutation patterns across tumor samples.
 
@@ -26,30 +25,30 @@ Somatic mutation analysis was performed using TCGA-LUAD MAF files to identify re
 <details>
 <summary><b>View mutation analysis results</b></summary>
 
-- Gene mutation summary: [Gene Summary](results/tables/TCGA_LUAD_gene_summary.csv)
+- Gene mutation summary: [Gene Summary](results/maf/tables/TCGA_LUAD_gene_summary.csv)
 
 </details>
 
 ### Biological Interpretation
 
-The mutation landscape demonstrated substantial genomic heterogeneity across LUAD tumors. TP53 mutations were highly recurrent and distributed across important functional domains, suggesting disruption of DNA damage response and cell-cycle regulation mechanisms.
+The mutation analysis revealed substantial variability in mutation burden across LUAD tumors. TP53 mutations were highly recurrent and distributed across important functional domains, suggesting disruption of DNA damage response and cell-cycle regulation mechanisms.
 
 The enrichment of C>A and C>T substitutions is also consistent with smoking-associated mutational signatures commonly observed in lung adenocarcinoma.
 
 ### Key Visualizations
 
 #### Mutation Summary
-![MAF Summary](results/figures/TCGA_LUAD_maf_summary.png)
+![MAF Summary](results/maf/figures/TCGA_LUAD_maf_summary.png)
 
 #### Oncoplot
-![Oncoplot](results/figures/TCGA_LUAD_oncoplot.png)
+![Oncoplot](results/maf/figures/TCGA_LUAD_oncoplot.png)
 
-#### TP53 Lollipop Plot
-![TP53 Lollipop](results/figures/TCGA_LUAD_TP53_lollipop.png)
+#### Lollipop Plot
+![Lollipop](results/maf/figures/TCGA_LUAD_tp53_lollipop.png)
 
 ---
 
-## Copy Number Variation (CNV) Analysis
+## Copy Number Variation Profiling
 
 Copy number variation analysis was performed using TCGA-LUAD copy number segment data to investigate chromosomal instability and large-scale genomic alterations.
 
@@ -63,24 +62,24 @@ Copy number variation analysis was performed using TCGA-LUAD copy number segment
 <details>
 <summary><b>View CNV analysis results</b></summary>
 
-- CNV segments: [CNV Segments](results/tables/TCGA_LUAD_CNV_segments.csv)
-- CNV summary: [CNV Summary](results/tables/TCGA_LUAD_CNV_summary.csv)
+- CNV segments: [CNV Segments](results/cnv/tables/TCGA_LUAD_CNV_segments.csv)
+- CNV summary: [CNV Summary](results/cnv/tables/TCGA_LUAD_CNV_summary.csv)
 
 </details>
 
 ### Biological Interpretation
 
-The CNV analysis highlighted broad chromosomal instability across LUAD samples, with several genomic regions displaying strong copy number gains and losses.
+The CNV analysis revealed widespread chromosomal alterations across LUAD samples, with several genomic regions displaying strong copy number gains and losses.
 
-Such large-scale genomic alterations are associated with altered gene dosage, tumor evolution, and aggressive cancer phenotypes. The observed heterogeneity also suggests variability in genomic architecture between tumors.
+Such large-scale genomic alterations are associated with altered gene dosage, tumor evolution, and aggressive cancer phenotypes. These alterations collectively reflect the complex genomic architecture of lung adenocarcinoma.
 
 ### Key Visualizations
 
 #### CNV Segment Distribution
-![CNV Distribution](results/figures/TCGA_LUAD_CNV_distribution.png)
+![CNV Distribution](results/cnv/figures/TCGA_LUAD_CNV_distribution.png)
 
 #### CNV Heatmap
-![CNV Heatmap](results/figures/TCGA_LUAD_CNV_heatmap.png)
+![CNV Heatmap](results/cnv/figures/TCGA_LUAD_CNV_heatmap.png)
 
 ---
 
