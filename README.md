@@ -62,7 +62,6 @@ Copy number variation analysis was performed using TCGA-LUAD copy number segment
 <details>
 <summary><b>View CNV analysis results</b></summary>
 
-- CNV segments: [CNV Segments](results/cnv/tables/TCGA_LUAD_CNV_segments.csv)
 - CNV summary: [CNV Summary](results/cnv/tables/TCGA_LUAD_CNV_summary.csv)
 
 </details>
@@ -128,17 +127,23 @@ scripts/
 └── tcga_luad_cnv_analysis.R
 
 results/
-├── figures/
-│   ├── TCGA_LUAD_maf_summary.png
-│   ├── TCGA_LUAD_oncoplot.png
-│   ├── TCGA_LUAD_TP53_lollipop.png
-│   ├── TCGA_LUAD_CNV_distribution.png
-│   └── TCGA_LUAD_CNV_heatmap.png
+├── maf/
+│   ├── figures/
+│   │   ├── TCGA_LUAD_maf_summary.png
+│   │   ├── TCGA_LUAD_oncoplot.png
+│   │   └── TCGA_LUAD_tp53_lollipop.png
+│   │
+│   └── tables/
+│       └── TCGA_LUAD_gene_summary.csv
 │
-└── tables/
-    ├── TCGA_LUAD_gene_summary.csv
-    ├── TCGA_LUAD_CNV_segments.csv
-    └── TCGA_LUAD_CNV_summary.csv
+└── cnv/
+    ├── figures/
+    │   ├── TCGA_LUAD_CNV_distribution.png
+    │   └── TCGA_LUAD_CNV_heatmap.png
+    │
+    └── tables/
+        ├── TCGA_LUAD_CNV_segments.csv
+        └── TCGA_LUAD_CNV_summary.csv
 
 data/
 └── downloaded TCGA files (not included in repository)
